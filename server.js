@@ -6,8 +6,6 @@ const api = require('./api.js')
 
 app.use(cors()) 
 
-
-
 // const rappers = { 
 //     'six9ine': {
 //         'age': 29,
@@ -25,11 +23,10 @@ app.use(cors())
 //         'birthLocation': 'unknown'
 //     }
 // }
+
 app.get('/', (request, response)=>{
     response.sendFile(__dirname + '/index.html')
 })
-
-Member.eddie
 
 app.get('/api/:name',(request,response)=>{
     const rapperName = request.params.name.toLowerCase()
