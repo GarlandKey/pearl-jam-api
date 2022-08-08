@@ -7,38 +7,37 @@ app.use(cors())
 
 
 /*
- *  OBJECT
+ *  API CLASSES
  */
 
 class Member {
-    constructor(name, dob, bands, position) {
-        this.name;
-        this.age = getAge()
-        this.dob;
-        this.bands;
-        this.instruments;
-        getAge: function() {
-            // calculate difference in months between current date and dob
-            let monthDiff =  Date.now() - this.dob.getTime();
-            // convert
-            let ageDate = new Date(monthDiff);
-            let year = ageDate.getUTCFullYear();
-            let age = Math.abs(year - 1970)
-            return age
-        }
+    constructor(name, dob, bands, instruments) {
+        this.name = name;
+        this.dob = dob;
+        this.age = this.getAge();
+        this.bands = bands;
+        this.instruments = instruments;
+    };
+    getAge() {
+        let monthDiff =  Date.now() - new Date(this.dob).getTime();
+        let ageDate = new Date(monthDiff);
+        let year = ageDate.getUTCFullYear();
+        let age = Math.abs(year - 1970)
+        return age
     }
 }
 
 class Album {
     constructor(name, cover, label, producer, releaseDate, studio, trackList) {
-        this.name;
-        this.cover;
-        this.releaseDate;
-        this.producer;
-        this.studio;
-        this.trackList;
+        this.name = name;
+        this.cover = cover;
+        this.releaseDate = releaseDate;
+        this.producer = producer;
+        this.studio = studio;
+        this.trackList = trackList;
     }
 }
+
 
 
 const ten = new Album(
@@ -46,7 +45,7 @@ const ten = new Album(
     'img/ten.webp',
     'Epic',
     `Brendan O'Brien`,
-    'August 27, 1991',
+    '08/27/1991',
     [
         'London Bridge'
     ],
@@ -69,7 +68,7 @@ const vs = new Album(
     'img/vs.webp',
     'Epic',
     `Brendan O'Brien`,
-    'October 19, 1993',
+    '10/19/1993',
     [
         'The Site',
         'Potatohead'
@@ -94,7 +93,7 @@ const vitalogy = new Album(
     'img/vitalogy.webp',
     'Epic',
     `Brendan O'Brien`,
-    'November 22, 1994',
+    '11/22/1994',
     [
         'Bad Animals',
         'Doppler',
@@ -123,7 +122,7 @@ const noCode = new Album(
     'img/nocode.webp',
     'Epic',
     `Brendan O'Brien`,
-    'August 27, 1996',
+    '08/27/1996',
     [
         'CRC',
         'Litho',
@@ -150,7 +149,7 @@ const yield = new Album(
     'img/yeild.webp',
     'Epic',
     `Brendan O'Brien`,
-    'February 3, 1998',
+    '03/03/1998',
     [
         'Bad Animals',
         'Doppler',
@@ -178,7 +177,7 @@ const binaural = new Album(
     'img/binaural.webp',
     'Epic',
     'Tchad Blake',
-    'May 16, 2000',
+    '05/16/2000',
     [
         'Litho'
     ],    
@@ -203,7 +202,7 @@ const riotAct = new Album(
     'img/riotact.webp',
     'Epic',
     'Adam Kasper',
-    'November 12, 2002',
+    '11/12/2002',
     [
         'Space',
         'X'
@@ -226,12 +225,12 @@ const riotAct = new Album(
         15: 'All or None'
     })
 
-const pearljam = new Album(
+const pearlJam = new Album(
     'Pearl Jam',
     'img/pearljam.webp',
     'J',
     'Adam Kasper',
-    'May 2, 2006',
+    '05/02/2006',
     [
         'X'
     ],    
@@ -256,7 +255,7 @@ const backspacer = new Album(
     'img/backspacer.webp',
     'Monkeywrench',
     `Brendan O'Brien`,
-    'September 20, 2009',
+    '09/20/2009',
     [
         'Doppler',
         'Henson',
@@ -284,7 +283,7 @@ const lightningBolt = new Album(
         'Republic'
     ],
     `Brendan O'Brien`,
-    'October 15, 2013',
+    '10/25/2013',
     [
         'Henson',
         'Litho',
@@ -310,7 +309,7 @@ const gigaton = new Album(
     'img/gigaton.webp',
     'Monkeywrench',
     'Josh Evans',
-    'March 27, 2020',
+    '03/27/2020',
     [
         'Monkeywrench',
         'Republic'
@@ -330,9 +329,9 @@ const gigaton = new Album(
         12: 'River Cross'
     })
 
-const eddie = new Member(
+const eddieVedder = new Member(
     'Eddie Vedder',
-    'December 23, 1964',
+    '12/23/1964',
     [
         'Bad Radio',
         'Indian Style',
@@ -346,44 +345,9 @@ const eddie = new Member(
         'Ukulele'
     ]);
 
-const mike = new Member(
-    'Mike McCready',
-    'April 5, 1966',
-    [
-        'Levee Walkers',
-        'Mad Season',
-        'Mother Love Bone',
-        'Pearl Jam',
-        'The Rockfords',
-        'Walking Papers'
-    ],
-    [
-        'Bass',
-        'Lead Guitar',
-        'Vocals'
-    ]);
-
-const stone = new Member(
-    'Stone Gossard',
-    'July 20, 1966',
-    [
-        'Brad',
-        'Green River',
-        'Mother Love Bone',
-        'Pearl Jam',
-        'Temple of the Dog'
-    ],
-    [
-        'Bass',
-        'Drums',
-        'Guitar',
-        'Piano',
-        'Vocals'
-    ]);
-
-const jeff = new Member(
+const jeffAment = new Member(
     'Jeff Ament',
-    'March 10, 1963',
+    '03/10/1963',
     [
         'Green River',
         'Mother Love Bone',
@@ -403,9 +367,9 @@ const jeff = new Member(
         'Vocals'
     ]);
 
-const mattC = new Member(
+const mattCameron = new Member(
     'Matt Cameron',
-    'November 28, 1962',
+    '11/28/1962',
     [
         'Hater',
         'Pearl Jam',
@@ -423,40 +387,117 @@ const mattC = new Member(
         'Vocals'
     ]);
 
+const mikeMcCready = new Member(
+    'Mike McCready',
+    '04/05/1966',
+    [
+        'Levee Walkers',
+        'Mad Season',
+        'Mother Love Bone',
+        'Pearl Jam',
+        'The Rockfords',
+        'Walking Papers'
+    ],
+    [
+        'Bass',
+        'Lead Guitar',
+        'Vocals'
+    ]);
 
-// const rappers = { 
-//     'six9ine': {
-//         'age': 29,
-//         'birthName': 'Shéyaa Bin Abraham-Joseph',
-//         'birthLocation': 'London, England'
-//     },
-//     'chance the rapper':{
-//         'age': 29,
-//         'birthName': 'Chancelor Bennett',
-//         'birthLocation': 'Chicago, Illinois' 
-//     },
-//     'unknown':{
-//         'age': 0,
-//         'birthName': 'unknown',
-//         'birthLocation': 'unknown'
-//     }
-// }
+const stoneGossard = new Member(
+    'Stone Gossard',
+    '07/20/1966',
+    [
+        'Brad',
+        'Green River',
+        'Mother Love Bone',
+        'Pearl Jam',
+        'Temple of the Dog'
+    ],
+    [
+        'Bass',
+        'Drums',
+        'Guitar',
+        'Piano',
+        'Vocals'
+    ]);
 
-app.get('/', (request, response)=>{
+app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html')
 })
 
-app.get('/api/:name',(request,response)=>{
-    const rapperName = request.params.name.toLowerCase()
-
-    if( rappers[rapperName] ){
-        response.json(rappers[rapperName])
-    }else{
-        response.json(rappers['unknown'])
-    }
-    
+app.get('/api/members', (request, response) => {
+    response.json({eddieVedder, jeffAment, mattCameron, mikeMcCready, stoneGossard})
 })
 
-app.listen(process.env.PORT || PORT, ()=>{
+app.get('/api/members/eddievedder',(request,response) => {
+    response.json(eddieVedder)
+})
+
+app.get('/api/members/jeffament',(request,response) => {
+    response.json(jeffAment)
+})
+
+app.get('/api/members/mattcameron',(request,response) => {
+    response.json(mattCameron)
+})
+
+app.get('/api/members/mikemccready',(request,response) => {
+    response.json(mikeMcCready)
+})
+
+app.get('/api/members/stonegossard',(request,response) => {
+    response.json(stoneGossard)
+})
+
+app.get('/api/albums/',(request,response) => {
+    response.json({ten, vs, vitalogy, noCode, yield, binaural, riotAct, pearlJam, backspacer, lightningBolt, gigaton})
+})
+
+app.get('/api/albums/ten',(request,response) => {
+    response.json(ten)
+})
+
+app.get('/api/albums/vs',(request,response) => {
+    response.json(vs)
+})
+
+app.get('/api/albums/vitalogy',(request,response) => {
+    response.json(vitalogy)
+})
+
+app.get('/api/albums/nocode',(request,response) => {
+    response.json(noCode)
+})
+
+app.get('/api/albums/yield',(request,response) => {
+    response.json(yield)
+})
+
+app.get('/api/albums/binaural',(request,response) => {
+    response.json(binaural)
+})
+
+app.get('/api/albums/riotact',(request,response) => {
+    response.json(riotAct)
+})
+
+app.get('/api/albums/pearljam',(request,response) => {
+    response.json(pearlJam)
+})
+
+app.get('/api/albums/backspacer',(request,response) => {
+    response.json(backspacer)
+})
+
+app.get('/api/albums/lightningbolt',(request,response) => {
+    response.json(lightningBolt)
+})
+
+app.get('/api/albums/gigaton',(request,response) => {
+    response.json(gigaton)
+})
+
+app.listen(process.env.PORT || PORT, () => {
     console.log(`The server is now running on port ${PORT}!`)
 })
